@@ -22,7 +22,7 @@ func main() {
 }
 
 func print(f *os.File) {
-	re := regexp.MustCompile("\033\\[[0-9]{0,2}[mKJH]")
+	re := regexp.MustCompile("\033\\[([0-9]{0,2}[mKJCDBA]|[0-9]+;[0-9]+H)")
 	s := bufio.NewScanner(f)
 	for s.Scan() {
 		fmt.Println(re.ReplaceAllString(s.Text(), ""))
